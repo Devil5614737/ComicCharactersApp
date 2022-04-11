@@ -1,13 +1,30 @@
 import React from "react";
 import styles from "../../styles/Home.module.css";
 import Link from "next/link";
+import {motion} from 'framer-motion';
 
 function comics({ comics }) {
   return (
     <main className={styles.main}>
       <div className={styles.charactersContainer}>
         {comics.map((comic) => (
-          <div key={comic.id} className={styles.character}>
+          <motion.div   initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {
+              scale: 0,
+              opacity: 0,
+            },
+            visible: {
+              scale: 1,
+              opacity: 1,
+              transition: {
+                delay: 0.1,
+                type: "spring",
+                stiffness: 100,
+              },
+            },
+          }} key={comic.id} className={styles.character}>
             <img
               src={comic.thumbnail.path + "/portrait_fantastic.jpg"}
               alt="character"
@@ -17,7 +34,7 @@ function comics({ comics }) {
                 <p>{comic.title}</p>
               </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </main>

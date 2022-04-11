@@ -1,4 +1,5 @@
 import styles from "../../styles/Home.module.css";
+import { motion } from "framer-motion";
 
 let time = 1;
 let api_key = "40c7ae95cd05146a49ca12d5450dfde5";
@@ -48,20 +49,83 @@ const CharacterInfo = ({ character }) => {
         <main className={styles.main}>
           <div className={styles.topContainer}>
             <div className={styles.thumbnail}>
-              <img
+              <motion.img initial='hidden' animate='visible' variants={{
+                hidden:{
+                  scale:0,
+                  opacity:0
+                },
+                visible:{
+                  scale:1,
+                  opacity:1,
+                  transition:{
+                    delay:.2
+                  }
+                }
+              }}
                 src={cr.thumbnail.path + "/portrait_uncanny.jpg"}
                 alt="thumbnail"
               />
             </div>
             <div className={styles.info}>
-              <p className={styles.title}>{cr.name}</p>
-              <p className={styles.desc}>{cr.description?cr.description:"no description available"}</p>
+
+              <div >
+                <motion.p initial='hidden' animate='visible' variants={{
+                hidden:{
+                  scale:0,
+                  opacity:0
+                },
+                visible:{
+                  scale:1,
+                  opacity:1,
+                  transition:{
+                    delay:.4
+                  }
+                }
+              }} className={styles.title}>{cr.name}</motion.p>
+              </div>
+              <motion.p initial='hidden' animate='visible' variants={{
+                hidden:{
+                  scale:0,
+                  opacity:0
+                },
+                visible:{
+                  scale:1,
+                  opacity:1,
+                  transition:{
+                    delay:.7
+                  }
+                }
+              }} className={styles.desc}>{cr.description?cr.description:"no description available"}</motion.p>
             </div>
           </div>
         <section className={styles.comicsSection}>
 
-            <p>Comics({cr.comics.items.length})</p>
-          <div className={styles.comicsContainer}>
+            <motion.p initial='hidden' animate='visible' variants={{
+                hidden:{
+                  x:100,
+                  opacity:0
+                },
+                visible:{
+                  x:0,
+                  opacity:1,
+                  transition:{
+                    delay:.9
+                  }
+                }
+              }}>Comics({cr.comics.items.length})</motion.p>
+          <motion.div initial='hidden' animate='visible' variants={{
+                hidden:{
+                  x:100,
+                  opacity:0
+                },
+                visible:{
+                  x:0,
+                  opacity:1,
+                  transition:{
+                    delay:1
+                  }
+                }
+              }} className={styles.comicsContainer}>
             {cr.comics.items.map((comic) => (
               <div className={styles.comicsLinks}>
                 <div className={styles.links}>
@@ -69,12 +133,24 @@ const CharacterInfo = ({ character }) => {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </section>
         <section className={styles.comicsSection}>
 
             <p>Series({cr.series.items.length})</p>
-          <div className={styles.comicsContainer}>
+          <motion.div initial='hidden' animate='visible' variants={{
+                hidden:{
+                  x:100,
+                  opacity:0
+                },
+                visible:{
+                  x:0,
+                  opacity:1,
+                  transition:{
+                    delay:1.1
+                  }
+                }
+              }}  className={styles.comicsContainer}>
             {cr.series.items.map((s) => (
               <div className={styles.comicsLinks}>
                 <div className={styles.links}>
@@ -82,12 +158,24 @@ const CharacterInfo = ({ character }) => {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div >
         </section>
         <section className={styles.comicsSection}>
 
             <p>Stories({cr.stories.items.length})</p>
-          <div className={styles.comicsContainer}>
+          <motion.div initial='hidden' animate='visible' variants={{
+                hidden:{
+                  x:100,
+                  opacity:0
+                },
+                visible:{
+                  x:0,
+                  opacity:1,
+                  transition:{
+                    delay:1.3
+                  }
+                }
+              }} className={styles.comicsContainer}>
             {cr.stories.items.map((s) => (
               <div className={styles.comicsLinks}>
                 <div className={styles.links}>
@@ -95,7 +183,7 @@ const CharacterInfo = ({ character }) => {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </section>
         </main>
       ))}

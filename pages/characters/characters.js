@@ -2,24 +2,47 @@ import React, { useContext } from "react";
 import styles from "../../styles/Home.module.css";
 import Link from "next/link";
 import { Context } from "../../context/Context";
+import { motion } from "framer-motion";
 
 function characters({ characters }) {
-  const{searchResults}=useContext(Context)
+  const { searchResults } = useContext(Context);
+
+  // />
   return (
     <main className={styles.main}>
       <div className={styles.charactersContainer}>
-    {characters.map((character) => (
-          <div key={character.id} className={styles.character}>
+        {characters.map((character) => (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {
+                scale: 0,
+                opacity: 0,
+              },
+              visible: {
+                scale: 1,
+                opacity: 1,
+                transition: {
+                  delay: 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                },
+              },
+            }}
+            key={character.id}
+            className={styles.character}
+          >
             <img
               src={character.thumbnail.path + "/portrait_fantastic.jpg"}
               alt="character"
             />
             <div className={styles.characterInfo}>
-              <Link href={'/characters/'+character.id}>
-                  <p>{character.name}</p>
+              <Link href={"/characters/" + character.id}>
+                <p>{character.name}</p>
               </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </main>

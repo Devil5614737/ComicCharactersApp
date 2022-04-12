@@ -10,6 +10,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media screen and (max-width: 550px) {
+      padding: 2em 3em;
+    }
     .links {
       a {
         color: white;

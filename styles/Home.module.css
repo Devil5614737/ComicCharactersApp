@@ -19,6 +19,12 @@
           align-items: center;
 }
 
+@media screen and (max-width: 550px) {
+  .navbar .navbarContainer {
+    padding: 2em 3em;
+  }
+}
+
 .navbar .navbarContainer .links a {
   color: white;
   margin-right: 29px;

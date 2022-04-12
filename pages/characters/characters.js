@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Context } from "../../context/Context";
 import { motion } from "framer-motion";
 
+
 function characters({ characters }) {
   const { searchResults } = useContext(Context);
 
